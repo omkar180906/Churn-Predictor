@@ -672,22 +672,22 @@ export default function PerspectiveTunnelHero({
 
     const pointer = useCameraParallax(!reduce);
 
-    // Headline animations
-    const titleScale = useTransform(smoothProgress, [0, 0.45, 0.8], [0.75, 1, 1.4]);
-    const titleOpacity = useTransform(smoothProgress, [0, 0.08, 0.45, 0.7], [0.2, 1, 1, 0]);
+    // Headline animations: dissolves early in the flight so it never lingers or ghosts over the dashboard
+    const titleScale = useTransform(smoothProgress, [0, 0.30, 0.48], [0.85, 1, 1.25]);
+    const titleOpacity = useTransform(smoothProgress, [0, 0.08, 0.30, 0.48], [0.2, 1, 1, 0]);
     const promptOpacity = useTransform(smoothProgress, [0, 0.12], [1, 0]);
 
     // Forward breakthrough camera acceleration (zoom-in through tunnel center)
-    const cameraZoom = useTransform(smoothProgress, [0, 0.65, 0.95], [1, 1, 2.2]);
-    const tunnelFade = useTransform(smoothProgress, [0, 0.75, 0.96], [1, 1, 0]);
+    const cameraZoom = useTransform(smoothProgress, [0, 0.58, 0.82], [1, 1, 2.5]);
+    const tunnelFade = useTransform(smoothProgress, [0, 0.65, 0.82], [1, 1, 0]);
 
     // Expanding Warp Aperture Portal
-    const portalScale = useTransform(smoothProgress, [0.65, 0.88, 1], [0.2, 3.5, 7]);
-    const portalOpacity = useTransform(smoothProgress, [0.65, 0.8, 0.96], [0, 1, 0]);
+    const portalScale = useTransform(smoothProgress, [0.55, 0.76, 1], [0.2, 4.5, 8]);
+    const portalOpacity = useTransform(smoothProgress, [0.55, 0.68, 0.78], [0, 1, 0]);
 
     // Futuristic Breakthrough Status Label
-    const portalTextOpacity = useTransform(smoothProgress, [0.72, 0.84, 0.94], [0, 1, 0]);
-    const portalTextScale = useTransform(smoothProgress, [0.72, 0.84, 0.94], [0.85, 1, 1.15]);
+    const portalTextOpacity = useTransform(smoothProgress, [0.60, 0.68, 0.75], [0, 1, 0]);
+    const portalTextScale = useTransform(smoothProgress, [0.60, 0.68, 0.75], [0.85, 1, 1.15]);
 
     // Golden Angle tunnel card configuration
     const tunnelCards: TunnelCardData[] = useMemo(() => {

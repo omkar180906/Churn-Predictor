@@ -88,27 +88,9 @@ export default function MLDashboardSection({
                 className="relative w-full flex-1 bg-neutral-950 overflow-hidden"
                 style={{ width: "100%", height: "calc(100vh - 48px)", minHeight: "calc(100vh - 48px)" }}
             >
-                {/* Loading Screen Overlay */}
+                {/* Non-blocking top loading indicator: never creates a blank black screen! */}
                 {isLoading && (
-                    <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-neutral-950 p-6 text-center">
-                        <div className="relative h-16 w-16 mb-4 flex items-center justify-center">
-                            <div className="absolute inset-0 rounded-full border-2 border-amber-400/20 border-t-amber-400 animate-spin" />
-                            <div className="absolute inset-2 rounded-full border-2 border-purple-900/40 border-b-amber-400 animate-spin [animation-duration:1.5s]" />
-                            <span className="text-xs font-mono font-bold text-amber-400">ML</span>
-                        </div>
-
-                        <h3 className="text-base font-bold text-white mb-1 font-mono">
-                            CONNECTING TO CHURN PREDICTION DASHBOARD
-                        </h3>
-                        <p className="text-xs text-neutral-400 max-w-md font-mono leading-relaxed">
-                            Loading Random Forest inference engine & analytics suite...
-                        </p>
-
-                        <div className="mt-4 flex items-center gap-2 text-[11px] font-mono text-amber-400/80 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-                            <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-ping" />
-                            Host Server: http://localhost:8501
-                        </div>
-                    </div>
+                    <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-amber-400 via-emerald-400 to-amber-400 animate-pulse z-20 pointer-events-none" />
                 )}
 
                 {/* Error State */}
