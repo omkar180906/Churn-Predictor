@@ -16,7 +16,8 @@ export default function MLDashboardSection({
     const [iframeKey, setIframeKey] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const STREAMLIT_URL = "http://localhost:8501/?embed=true";
+    const STREAMLIT_URL =
+        process.env.NEXT_PUBLIC_STREAMLIT_URL || "http://localhost:8501/?embed=true";
 
     useEffect(() => {
         const timer = setTimeout(() => {
