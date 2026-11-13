@@ -16,8 +16,10 @@ export default function MLDashboardSection({
     const [iframeKey, setIframeKey] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const STREAMLIT_URL =
-        process.env.NEXT_PUBLIC_STREAMLIT_URL || "http://localhost:8501/?embed=true";
+    // Streamlit cloud dashboard integration
+    const STREAMLIT_URL = process.env.NEXT_PUBLIC_STREAMLIT_URL
+        ? `${process.env.NEXT_PUBLIC_STREAMLIT_URL}?embed=true`
+        : "https://churn-predictor-4pjfhtk23etzi587fhqj75.streamlit.app/?embed=true";
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -106,7 +108,7 @@ export default function MLDashboardSection({
                             Connection to Streamlit Engine Interrupted
                         </h3>
                         <p className="text-xs text-neutral-400 max-w-md mb-4 font-mono">
-                            The Python backend server at localhost:8501 might be restarting. Click below to reconnect.
+                            The Streamlit cloud engine might be restarting. Click below to reconnect.
                         </p>
                         <button
                             onClick={handleReload}
