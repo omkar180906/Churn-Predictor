@@ -45,3 +45,4 @@ desktop.ini
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+.streamlit/credentials.toml
