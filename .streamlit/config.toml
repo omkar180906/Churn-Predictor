@@ -1,9 +1,7 @@
+
 [server]
-headless = false
-port = 8501
+headless = true
 fileWatcherType = "none"
-enableCORS = false
-enableXsrfProtection = false
 
 [browser]
 gatherUsageStats = false
@@ -14,3 +12,4 @@ backgroundColor = "#DDE3E8"
 secondaryBackgroundColor = "#FFFFFF"
 textColor = "#3A0F34"
 font = "sans serif"
+
