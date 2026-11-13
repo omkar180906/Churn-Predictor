@@ -153,7 +153,10 @@ export default function Home() {
   const activeCompanyName = DEFAULT_COMPANIES[currentSlideIndex]?.title || "Overview";
 
   return (
-    <main className="fixed inset-0 w-screen h-[100svh] overflow-hidden bg-neutral-950 text-white select-none">
+    <main
+      className="fixed inset-0 w-screen h-[100svh] overflow-hidden text-white select-none"
+      style={{ backgroundColor: isAtDashboard ? "#DDE3E8" : "#0a0a0a" }}
+    >
       {/* 
         LAYER 0: Live Python/Streamlit Machine Learning Dashboard
         PRELOADED IN THE BACKGROUND from second zero!

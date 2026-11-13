@@ -52,8 +52,51 @@ def inject_custom_css():
         color: #3A0F34;
     }
 
-    .stApp {
-        background-color: #DDE3E8;
+    /* ---- Solid Opaque Background & Permanent Anti-Ghosting Rules ---- */
+    html, body, [data-testid="stAppViewContainer"], .stApp, section.main, [data-testid="stMain"] {
+        background-color: #DDE3E8 !important;
+        opacity: 1 !important;
+    }
+
+    /* 1. Eliminate stale element watermarks: completely hide stale elements from prior page runs */
+    [data-stale="true"],
+    [data-stale="true"] *,
+    div[data-stale="true"],
+    [data-testid="stElementContainer"][data-stale="true"],
+    .element-container[data-stale="true"],
+    div.stApp[data-test-script-state="running"] [data-stale="true"] {
+        opacity: 0 !important;
+        display: none !important;
+        visibility: hidden !important;
+        transition: none !important;
+        pointer-events: none !important;
+    }
+
+    /* 2. Never dim running containers */
+    div.stApp[data-test-script-state="running"],
+    div.stApp[data-test-script-state="running"] [data-testid="stAppViewContainer"],
+    div.stApp[data-test-script-state="running"] [data-testid="stMain"],
+    div.stApp[data-test-script-state="running"] [data-testid="stVerticalBlock"] {
+        opacity: 1 !important;
+        filter: none !important;
+        transition: none !important;
+    }
+
+    /* 3. Active elements remain fully opaque with 0 transition delay */
+    .element-container:not([data-stale="true"]),
+    [data-testid="stElementContainer"]:not([data-stale="true"]),
+    [data-testid="stVerticalBlock"] > div:not([data-stale="true"]) {
+        opacity: 1 !important;
+        filter: none !important;
+        transition: none !important;
+    }
+
+    /* 4. Hide Streamlit rerun status spinner and toolbar completely */
+    div[data-testid="stStatusWidget"],
+    .stStatusWidget,
+    div[data-testid="stToolbar"] {
+        display: none !important;
+        visibility: hidden !important;
     }
 
     /* ---- Hide default Streamlit branding ---- */

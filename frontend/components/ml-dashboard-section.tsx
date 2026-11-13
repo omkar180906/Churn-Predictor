@@ -47,8 +47,8 @@ export default function MLDashboardSection({
         <section
             ref={containerRef}
             id="ml-dashboard-section"
-            className={`fixed inset-0 w-screen h-[100svh] bg-neutral-950 text-white flex flex-col justify-start items-stretch overflow-hidden ${className}`}
-            style={{ width: "100vw", height: "100vh" }}
+            className={`fixed inset-0 w-screen h-[100svh] bg-[#DDE3E8] text-[#3A0F34] flex flex-col justify-start items-stretch overflow-hidden ${className}`}
+            style={{ width: "100vw", height: "100vh", backgroundColor: "#DDE3E8" }}
         >
             {/* Top Sleek Dashboard Control Bar - Single clean header */}
             <div className="w-full h-12 bg-neutral-900 border-b border-white/10 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-md">
@@ -83,10 +83,15 @@ export default function MLDashboardSection({
                 </div>
             </div>
 
-            {/* True 100% Full Screen Iframe Container */}
+            {/* True 100% Full Screen Iframe Container with matching solid background */}
             <div
-                className="relative w-full flex-1 bg-neutral-950 overflow-hidden"
-                style={{ width: "100%", height: "calc(100vh - 48px)", minHeight: "calc(100vh - 48px)" }}
+                className="relative w-full flex-1 bg-[#DDE3E8] overflow-hidden"
+                style={{
+                    width: "100%",
+                    height: "calc(100vh - 48px)",
+                    minHeight: "calc(100vh - 48px)",
+                    backgroundColor: "#DDE3E8",
+                }}
             >
                 {/* Non-blocking top loading indicator: never creates a blank black screen! */}
                 {isLoading && (
@@ -132,6 +137,7 @@ export default function MLDashboardSection({
                         height: "100%",
                         minHeight: "100%",
                         display: "block",
+                        backgroundColor: "#DDE3E8",
                     }}
                     allow="clipboard-read; clipboard-write;"
                 />
