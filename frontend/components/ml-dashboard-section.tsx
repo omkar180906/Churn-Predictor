@@ -16,10 +16,12 @@ export default function MLDashboardSection({
     const [iframeKey, setIframeKey] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Streamlit cloud dashboard integration
-    const STREAMLIT_URL = process.env.NEXT_PUBLIC_STREAMLIT_URL
-        ? `${process.env.NEXT_PUBLIC_STREAMLIT_URL}?embed=true`
-        : "https://churn-predictor-4pjfhtk23etzi587fhqj75.streamlit.app/?embed=true";
+    // Streamlit cloud dashboard integration: guaranteed clean origin with exact '?embed=true' parameter
+    const rawBaseUrl =
+        process.env.NEXT_PUBLIC_STREAMLIT_URL ||
+        "https://churn-predictor-4pjfhtk23etzi587fhqj75.streamlit.app";
+    const cleanBaseUrl = rawBaseUrl.split("?")[0].replace(/\/+$/, "");
+    const STREAMLIT_URL = `${cleanBaseUrl}/?embed=true`;
 
     useEffect(() => {
         const timer = setTimeout(() => {
